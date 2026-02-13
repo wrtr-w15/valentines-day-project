@@ -31,12 +31,31 @@ export function QuestionSection({ onYes }) {
     if (!btn) return
 
     const rect = btn.getBoundingClientRect()
-    const maxX = window.innerWidth - btn.offsetWidth - 60
-    const maxY = window.innerHeight - btn.offsetHeight - 60
+    const margin = 24
+    const w = window.innerWidth
+    const h = window.innerHeight
+    const btnW = btn.offsetWidth
+    const btnH = btn.offsetHeight
+
+    const minX = margin
+    const maxX = Math.max(minX, w - btnW - margin)
+    const rangeX = Math.max(0, maxX - minX)
 
     const nextCount = noRunCount + 1
-    const newX = Math.random() * maxX + 30
-    const newY = Math.random() * maxY + 30
+    let newX = minX + Math.random() * rangeX
+    let newY
+
+    if (h < 500) {
+      const centerY = h / 2 - btnH / 2
+      const band = Math.min(80, h * 0.25)
+      newY = centerY + (Math.random() - 0.5) * band
+    } else {
+      const minY = margin
+      const maxY = Math.max(minY, h - btnH - margin)
+      newY = minY + Math.random() * Math.max(0, maxY - minY)
+    }
+
+    newY = Math.max(margin, Math.min(h - btnH - margin, newY))
 
     if (noRunCount === 0) {
       x.set(rect.left)
