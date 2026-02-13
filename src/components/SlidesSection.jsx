@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useSwipeable } from 'react-swipeable'
-import { SLIDES, TEXTS } from '../config.js'
+import { SLIDES, TEXTS, SETTINGS } from '../config.js'
 
 const cardVariants = {
   enter: (direction) => ({
@@ -51,7 +51,7 @@ export function SlidesSection({ onComplete }) {
       const timer = setTimeout(() => {
         setIsExiting(true)
         setTimeout(() => onComplete(), 600)
-      }, 5000)
+      }, SETTINGS.lastSlideDelaySeconds * 1000)
       return () => clearTimeout(timer)
     }
   }, [currentIndex, isExiting, onComplete])
