@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --rose: #e91e63;
+  --rose-deep: #c2185b;
+  --rose-light: #f8bbd9;
+  --cream: #fff5f8;
+  --text-dark: #4a1942;
+}
+
+body {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  min-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    #ffecd2 0%,
+    #fcb69f 25%,
+    #ff9a9e 50%,
+    #fecfef 75%,
+    #ffecd2 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientFlow 12s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+#root {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
